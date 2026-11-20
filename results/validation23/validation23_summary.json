@@ -1,0 +1,240 @@
+{
+ "edge": {
+  "Darwin": {
+   "CEEMDAN": {
+    "low": {
+     "mm": 29.3,
+     "pct": 154
+    },
+    "middle": {
+     "mm": 76.9,
+     "pct": 104
+    },
+    "high": {
+     "mm": 75.8,
+     "pct": 40
+    }
+   },
+   "VMD": {
+    "low": {
+     "mm": 28.6,
+     "pct": 19
+    },
+    "middle": {
+     "mm": 34.4,
+     "pct": 52
+    },
+    "high": {
+     "mm": 22.1,
+     "pct": 58
+    }
+   },
+   "WT": {
+    "low": {
+     "mm": 0.0,
+     "pct": 0
+    },
+    "middle": {
+     "mm": 0.0,
+     "pct": 0
+    },
+    "high": {
+     "mm": 0.0,
+     "pct": 0
+    }
+   }
+  },
+  "Perth": {
+   "CEEMDAN": {
+    "low": {
+     "mm": 4.0,
+     "pct": 169
+    },
+    "middle": {
+     "mm": 28.1,
+     "pct": 64
+    },
+    "high": {
+     "mm": 28.4,
+     "pct": 75
+    }
+   },
+   "VMD": {
+    "low": {
+     "mm": 8.1,
+     "pct": 19
+    },
+    "middle": {
+     "mm": 10.0,
+     "pct": 60
+    },
+    "high": {
+     "mm": 9.1,
+     "pct": 68
+    }
+   },
+   "WT": {
+    "low": {
+     "mm": 0.0,
+     "pct": 0
+    },
+    "middle": {
+     "mm": 0.0,
+     "pct": 0
+    },
+    "high": {
+     "mm": 0.0,
+     "pct": 0
+    }
+   }
+  }
+ },
+ "L4_open": {
+  "LSTM": {
+   "n_cases": 24,
+   "n_improved": 23,
+   "max_gain": 0.148,
+   "n_signif_better": 5,
+   "h1_Darwin_p": {
+    "LSTM-CEEMDAN": 0.015,
+    "LSTM-VMD": 0.013,
+    "LSTM-WT": 0.006
+   }
+  },
+  "XGBoost": {
+   "n_cases": 24,
+   "n_improved": 11,
+   "max_gain": 0.129,
+   "n_signif_better": 0,
+   "h1_Darwin_p": {
+    "XGBoost-CEEMDAN": 0.274,
+    "XGBoost-VMD": 0.121,
+    "XGBoost-WT": 0.552
+   }
+  },
+  "Darwin": {
+   "adaptive_NSE_range": [
+    0.599,
+    0.639
+   ],
+   "climatology_NSE_h1": 0.643,
+   "p_vs_climatology": {
+    "1": 0.958,
+    "3": 0.612,
+    "6": 0.263,
+    "12": 0.769
+   },
+   "DM_vs_climatology": {
+    "1": -0.05,
+    "3": 0.51,
+    "6": 1.13,
+    "12": 0.29
+   },
+   "p_vs_NNLS": {
+    "1": 0.313,
+    "3": 0.171,
+    "6": 0.643,
+    "12": 0.639
+   }
+  },
+  "Perth": {
+   "adaptive_NSE_range": [
+    0.535,
+    0.568
+   ],
+   "climatology_NSE_h1": 0.418,
+   "p_vs_climatology": {
+    "1": 0.021,
+    "3": 0.012,
+    "6": 0.0,
+    "12": 0.001
+   },
+   "DM_vs_climatology": {
+    "1": -2.36,
+    "3": -2.57,
+    "6": -4.11,
+    "12": -3.36
+   },
+   "p_vs_NNLS": {
+    "1": 0.643,
+    "3": 0.637,
+    "6": 0.272,
+    "12": 0.497
+   }
+  }
+ },
+ "L4_closed": {
+  "LSTM": {
+   "n_cases": 24,
+   "n_improved": 21,
+   "max_gain": 0.168,
+   "n_signif_better": 5,
+   "h1_Darwin_p": {
+    "LSTM-CEEMDAN": 0.026,
+    "LSTM-VMD": 0.026,
+    "LSTM-WT": 0.012
+   }
+  },
+  "XGBoost": {
+   "n_cases": 24,
+   "n_improved": 14,
+   "max_gain": 0.2,
+   "n_signif_better": 1,
+   "h1_Darwin_p": {
+    "XGBoost-CEEMDAN": 0.297,
+    "XGBoost-VMD": 0.183,
+    "XGBoost-WT": 0.073
+   }
+  },
+  "Darwin": {
+   "adaptive_NSE_range": [
+    0.603,
+    0.649
+   ],
+   "climatology_NSE_h1": 0.643,
+   "p_vs_climatology": {
+    "1": 0.684,
+    "3": 0.594,
+    "6": 0.262,
+    "12": 0.719
+   },
+   "DM_vs_climatology": {
+    "1": 0.41,
+    "3": 0.54,
+    "6": 1.13,
+    "12": -0.36
+   },
+   "p_vs_NNLS": {
+    "1": 0.037,
+    "3": 0.17,
+    "6": 0.889,
+    "12": 0.733
+   }
+  },
+  "Perth": {
+   "adaptive_NSE_range": [
+    0.523,
+    0.578
+   ],
+   "climatology_NSE_h1": 0.418,
+   "p_vs_climatology": {
+    "1": 0.066,
+    "3": 0.013,
+    "6": 0.0,
+    "12": 0.002
+   },
+   "DM_vs_climatology": {
+    "1": -1.87,
+    "3": -2.55,
+    "6": -3.7,
+    "12": -3.2
+   },
+   "p_vs_NNLS": {
+    "1": 0.579,
+    "3": 0.785,
+    "6": 0.966,
+    "12": 0.362
+   }
+  }
+ }
+}

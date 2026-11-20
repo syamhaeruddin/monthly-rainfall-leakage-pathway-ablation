@@ -1,0 +1,116 @@
+{
+ "Darwin": {
+  "fast:clim_fixed": {
+   "n": 100,
+   "NSE_mean": 0.6646949010004995,
+   "NSE_sd": 0.06789426585531286
+  },
+  "fast:clim_rolling30": {
+   "n": 100,
+   "NSE_mean": 0.6595056354000772,
+   "NSE_sd": 0.07012414138436042
+  },
+  "P0_72": {
+   "n": 100,
+   "NSE_mean": 0.7241185951685075,
+   "NSE_sd": 0.7029885541301201,
+   "share_NSE_above_clim": 0.85,
+   "share_signif_better_than_clim": 0.53
+  },
+  "P0_72_L1open": {
+   "n": 100,
+   "NSE_mean": 0.9569600216343798,
+   "NSE_sd": 0.04165471856840801,
+   "share_NSE_above_clim": 1.0,
+   "share_signif_better_than_clim": 0.9
+  },
+  "P1": {
+   "n": 100,
+   "NSE_mean": 0.5767378831697032,
+   "NSE_sd": 0.120128649897598,
+   "share_NSE_above_clim": 0.24,
+   "share_signif_better_than_clim": 0.0
+  },
+  "step:clim_fixed": {
+   "n": 5,
+   "NSE_mean": 0.6640306820438866,
+   "NSE_sd": 0.04457529709648509
+  },
+  "step:clim_rolling30": {
+   "n": 5,
+   "NSE_mean": 0.6525381126797305,
+   "NSE_sd": 0.05257515343346929
+  },
+  "P2": {
+   "n": 5,
+   "NSE_mean": 0.34615055634380687,
+   "NSE_sd": 0.28804637980502,
+   "share_NSE_above_clim": 0.0,
+   "share_signif_better_than_clim": 0.0
+  },
+  "P3": {
+   "n": 5,
+   "NSE_mean": 0.3274568741514583,
+   "NSE_sd": 0.2529027391592377,
+   "share_NSE_above_clim": 0.0,
+   "share_signif_better_than_clim": 0.0
+  }
+ },
+ "Perth": {
+  "fast:clim_fixed": {
+   "n": 100,
+   "NSE_mean": 0.6480680718117362,
+   "NSE_sd": 0.07065890724834037
+  },
+  "fast:clim_rolling30": {
+   "n": 100,
+   "NSE_mean": 0.6398696415863361,
+   "NSE_sd": 0.07239045811684293
+  },
+  "P0_72": {
+   "n": 100,
+   "NSE_mean": 0.6792487858189965,
+   "NSE_sd": 0.6882141151869139,
+   "share_NSE_above_clim": 0.79,
+   "share_signif_better_than_clim": 0.49
+  },
+  "P0_72_L1open": {
+   "n": 100,
+   "NSE_mean": 0.9536023179401596,
+   "NSE_sd": 0.04164635572726697,
+   "share_NSE_above_clim": 1.0,
+   "share_signif_better_than_clim": 0.9
+  },
+  "P1": {
+   "n": 100,
+   "NSE_mean": 0.5514302407757453,
+   "NSE_sd": 0.11343139825414153,
+   "share_NSE_above_clim": 0.12,
+   "share_signif_better_than_clim": 0.0
+  },
+  "step:clim_fixed": {
+   "n": 5,
+   "NSE_mean": 0.6405726810766381,
+   "NSE_sd": 0.08049920147693836
+  },
+  "step:clim_rolling30": {
+   "n": 5,
+   "NSE_mean": 0.6425401666977483,
+   "NSE_sd": 0.09069415416240095
+  },
+  "P2": {
+   "n": 5,
+   "NSE_mean": 0.25265489745932,
+   "NSE_sd": 0.2960900978993319,
+   "share_NSE_above_clim": 0.0,
+   "share_signif_better_than_clim": 0.0
+  },
+  "P3": {
+   "n": 5,
+   "NSE_mean": 0.42237527536542235,
+   "NSE_sd": 0.1185208692872756,
+   "share_NSE_above_clim": 0.0,
+   "share_signif_better_than_clim": 0.0
+  }
+ }
+}
