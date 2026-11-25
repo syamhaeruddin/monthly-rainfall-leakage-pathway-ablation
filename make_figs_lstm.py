@@ -211,11 +211,11 @@ def fig_workflow():
 
 # ---------------------------------------------------------------- Graphical abstract (1328 x 531 px minimum)
 def graphical_abstract():
-    lab = {"en": dict(t="Closing leakage pathways removes much of the apparent skill of a CEEMDAN ensemble",
+    lab = {"en": dict(t="Closing leakage pathways removes much of the apparent skill\nof a CEEMDAN ensemble",
                       a=["Original\ndesign", "close\nL1", "+ close\nL2", "+ close\nL3", "+ matched\nfeatures"],
                       sh="Shapley share of\ninflated NSE", clim="best climatology",
                       p={"L2": "L2 contemporaneous\ninput", "L3": "L3 full-series\ndecomposition", "L1": "L1 meta-learner\noverlap"}),
-           "id": dict(t="Menutup jalur kebocoran menghapus sebagian besar kinerja semu ensemble CEEMDAN",
+           "id": dict(t="Menutup jalur kebocoran menghapus sebagian besar kinerja semu\nensemble CEEMDAN",
                       a=["Rancangan\nawal", "tutup\nL1", "+ tutup\nL2", "+ tutup\nL3", "+ fitur\nsetara"],
                       sh="Porsi Shapley NSE\nyang menggelembung", clim="klimatologi terbaik",
                       p={"L2": "L2 masukan\nkontemporer", "L3": "L3 dekomposisi\nseluruh deret", "L1": "L1 tumpang tindih\nmeta-learner"})}[LANG]
@@ -242,7 +242,7 @@ lab["clim"], fontsize=6, color=INK2)
     ax2.set_xlabel(lab["sh"], fontsize=6.2); ax2.tick_params(labelsize=6, length=2)
     for s in ("top", "right"):
         ax2.spines[s].set_visible(False)
-    fig.text(0.09, 0.95, lab["t"], fontsize=7.6, fontweight="bold", va="top")
+    fig.text(0.09, 0.97, lab["t"], fontsize=7.6, fontweight="bold", va="top", linespacing=1.25)
     localize(fig)
     fig.savefig(os.path.join(OUT, f"graphical_abstract_{LANG}.png"), dpi=500, facecolor="white")
     fig.savefig(os.path.join(OUT, f"graphical_abstract_{LANG}.pdf"), facecolor="white")

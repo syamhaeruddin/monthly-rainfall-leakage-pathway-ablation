@@ -2,12 +2,18 @@
 
 Code that reproduces every number, table and figure in:
 
-> Haeruddin, Purwanto, Muljono, E. Noersasongko. *A leakage-pathway ablation protocol for auditing
+> Haeruddin, E. Noersasongko, Purwanto, Muljono. *A leakage-pathway ablation protocol for auditing
 > decomposition–ensemble forecasts of monthly rainfall.* MethodsX (submitted).
 
 The protocol measures how much each data-leakage pathway inflates the skill of a decomposition-based
 forecast ensemble, and defines the causal evaluation that remains once all pathways are closed.
 Reference application: monthly rainfall at Darwin and Perth, Australia, 1921–2020.
+
+Archived at Zenodo: https://doi.org/10.5281/zenodo.24517885 (all versions).
+
+The article reports the audit with the **LSTM meta-learner** (`lpa_main_lstm.py`, `lpa_surrogate_lstm.py`; results in
+`results/lstm/` and `results/surrogate_lstm/`). The MLP meta-learner of the first version (`lpa_main.py`,
+`lpa_surrogate.py`; results in `results/`) is kept as a variant; the LSTM scripts import it and replace the meta-learner.
 
 | Pathway | Leaky setting | Causal setting |
 | --- | --- | --- |
@@ -33,12 +39,26 @@ Validation 2, Validation 3 and the copy diagnostic of the article are regenerate
 | `lpa_metalstm.py`, `lpa_main_lstm.py`, `lpa_surrogate_lstm.py` | 2–3 | the same audit with the LSTM meta-learner reported in the article (output in `results/lstm/`, `results/surrogate_lstm/`) | ~30 min + ~1.5 h |
 | `lpa_validation23.py` | – | Step 6, Validation 2 (edge effect) and Validation 3 (multi-horizon hybrids, adaptive gate), L4 open and closed; see [VALIDATION23.md](VALIDATION23.md) | ~11 min |
 | `lpa_copy_diagnostic.py` | – | copy diagnostic of step 7 (P0 vs P2/P3) | ~5 min |
-| `make_figs.py`, `make_figs_lstm.py` | 4 | Figures 1–4 and the graphical abstract (PNG 600 dpi + PDF) | < 1 min |
-| `make_pipeline*.py`, `make_solution*.py`, `make_improvement_2st.py` | 4 | pipeline and improvement figures | < 1 min |
+| `make_figs_lstm.py` | 4 | Figs. 1, 4, 5, 7 of the article and the graphical abstract (PNG 600 dpi + PDF) | < 1 min |
+| `make_pipeline_lstm.py`, `make_pipeline_causal_lstm.py`, `make_improvement_2st.py` | 4 | Figs. 2, 3 and 6 of the article | < 1 min |
+| `make_figs.py`, `make_pipeline.py`, `make_pipeline_causal.py`, `make_solution*.py` | 4 | the same figures for the MLP variant and earlier solution figures (not in the article) | < 1 min |
 | `companion_2stations/` | – | rerun of the companion cross-station gate on Darwin and Perth only (Validation 3, Fig. 6) | – |
 | `run_all.ps1`, `run_surrogate.ps1`, `run_lstm.ps1`, `run_validation23.ps1` | – | Windows helpers that chain the stages | – |
 
 \*Intel Core Ultra 9 285H, 16 threads, 14 parallel workers.
+
+Figures of the article and their files in `results/figures/lstm/`:
+
+| Article | File |
+| --- | --- |
+| Fig. 1 Workflow of the protocol | `fig1_workflow_en` |
+| Fig. 2 Original design (P0) | `fig0_pipeline_lstm_en` |
+| Fig. 3 Causal design (P3) | `fig0b_pipeline_causal_lstm_en` |
+| Fig. 4 NSE as pathways are closed | `fig2_ladder_en` |
+| Fig. 5 Shapley contributions | `fig3_shapley_en` |
+| Fig. 6 Improvement step (global gate) | `fig_improvement_2st_en` |
+| Fig. 7 Surrogate null test | `fig4_surrogate_en` |
+| Graphical abstract | `graphical_abstract_en` |
 
 ## Data
 
@@ -56,13 +76,25 @@ python -m venv .venv
 pip install -r requirements.txt
 
 python lpa_decompose.py --n_jobs 14
+
+# audit reported in the article (LSTM meta-learner)
+python lpa_main_lstm.py
+python lpa_surrogate_lstm.py --fast 100 --step 5 --n_jobs 14
+python make_figs_lstm.py results/lstm/lpa_main_all.json en
+python make_pipeline_lstm.py en results/figures/lstm
+python make_pipeline_causal_lstm.py en results/figures/lstm
+python make_improvement_2st.py en results/figures/lstm
+
+# MLP variant (optional)
 python lpa_main.py
 python lpa_surrogate.py --fast 100 --step 5 --n_jobs 14
 python make_figs.py results/lpa_main_all.json en
 ```
 
-Set `--n_jobs` to the number of physical cores minus one or two. Outputs go to `results/`
-(`lpa_main_all.json`, `lpa_summary.xlsx`, `lpa_surrogate_summary.json`, `figures/`) and progress to `logs/`.
+Set `--n_jobs` to the number of physical cores minus one or two. Outputs of the LSTM audit go to `results/lstm/`
+(`lpa_main_all.json`, `lpa_surrogate_summary.json`), `results/surrogate_lstm/` and `results/figures/lstm/`; those of
+the MLP variant go to `results/` (`lpa_main_all.json`, `lpa_summary.xlsx`, `lpa_surrogate_summary.json`, `figures/`).
+Progress is written to `logs/`.
 Every stage can be stopped and restarted; finished decompositions and surrogates are cached.
 
 ### Notes on reproducibility
@@ -70,7 +102,9 @@ Every stage can be stopped and restarted; finished decompositions and surrogates
 - **PyEMD ≥ 1.10 parallelises each CEEMDAN internally by default.** `lpa_common.ceemdan` sets
   `parallel=False`; otherwise the internal pools compete with the joblib workers for the CPU.
 - TensorFlow runs single-threaded in deterministic mode; LSTM and MLP results are reported over seeds 1–5.
-- The rerun reproduces the original report within seed spread
+- Every number quoted in the article comes from `results/lstm/lpa_main_all.json`,
+  `results/lstm/lpa_surrogate_summary.json`, `results/validation23/` and `results/copy_diagnostic.json`.
+- With the MLP variant, the rerun reproduces the original report within seed spread
   (P0 0.877/0.936, P0-72 0.657/0.900, P1 0.586/0.491, P2 0.172/0.106 for Darwin/Perth;
   original 0.880/0.936, 0.672/0.901, 0.577/0.489, 0.154/0.097).
 

@@ -17,12 +17,12 @@ python lpa_copy_diagnostic.py                                            # ~5 mi
 
 `lpa_validation23.py run --l4 open` reproduces the notebook, where every exogenous predictor enters at month t − 1.
 `--l4 closed` uses release-lagged predictors (Niño, DMI, PDO at t − 2), so that L1–L4 are all closed; the article
-(v5) reports this setting and quotes the L4-open values for comparison. `results/validation23/validation23_summary.json`
+reports this setting and quotes the L4-open values for comparison. `results/validation23/validation23_summary.json`
 collects every number quoted in the article for both settings.
 
 Results of the run on 20 November 2026:
 
-| | L4 open (notebook) | L4 closed (article v5) |
+| | L4 open (notebook) | L4 closed (article) |
 | --- | --- | --- |
 | Edge effect, all 18 values | identical to the article | – |
 | LSTM: hybrid better than raw | 23/24 cases, up to +0.148 | 21/24, up to +0.168 |
